@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class ImportHistory extends Model
 {
     use HasFactory;
-
+    protected $table = 'import_history';
     protected $fillable = [
         'imported_at',
         'source_file',

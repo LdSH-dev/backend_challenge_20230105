@@ -1,0 +1,150 @@
+openapi: 3.0.0
+info:
+  title: backend-challenge-20230105-coodesh
+  description: API para gerenciar produtos da Open Food Facts.
+  version: 1.0.0
+servers:
+  - url: http://127.0.0.1:8000/api
+    description: Servidor local
+paths:
+  /products:
+    get:
+      summary: Listar todos os produtos
+      operationId: getProducts
+      tags:
+        - products
+      responses:
+        '200':
+          description: Lista de produtos
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Product'
+    post:
+      summary: Criar um novo produto
+      operationId: createProduct
+      tags:
+        - products
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProductInput'
+      responses:
+        '201':
+          description: Produto criado com sucesso
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Product'
+
+  /products/{code}:
+    get:
+      summary: Obter um produto pelo código
+      operationId: getProductByCode
+      tags:
+        - products
+      parameters:
+        - name: code
+          in: path
+          required: true
+          description: Código do produto
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Produto encontrado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Product'
+        '404':
+          description: Produto não encontrado
+
+    put:
+      summary: Atualizar um produto existente
+      operationId: updateProduct
+      tags:
+        - products
+      parameters:
+        - name: code
+          in: path
+          required: true
+          description: Código do produto
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProductInput'
+      responses:
+        '200':
+          description: Produto atualizado com sucesso
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Product'
+        '404':
+          description: Produto não encontrado
+
+    delete:
+      summary: Deletar um produto
+      operationId: deleteProduct
+      tags:
+        - products
+      parameters:
+        - name: code
+          in: path
+          required: true
+          description: Código do produto
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Produto deletado com sucesso
+        '404':
+          description: Produto não encontrado
+
+components:
+  schemas:
+    Product:
+      type: object
+      properties:
+        code:
+          type: string
+          example: '22353763'
+        product_name:
+          type: string
+          example: 'Madalenas quadradas'
+        status:
+          type: string
+          enum: [published, trash, draft]
+        created_t:
+          type: string
+          format: date-time
+          example: '2024-11-03T00:00:00Z'
+        last_modified_t:
+          type: string
+          format: date-time
+          example: '2024-11-03T00:00:00Z'
+
+    ProductInput:
+      type: object
+      required:
+        - product_name
+        - status
+      properties:
+        product_name:
+          type: string
+          example: 'Madalenas quadradas'
+        status:
+          type: string
+          enum: [published, trash, draft]
