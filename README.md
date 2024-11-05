@@ -8,7 +8,8 @@ O projeto tem como objetivo dar suporte à equipe de nutricionistas da empresa F
 ## Ferramentas Utilizadas
 
 - PHP 8.2
-- Laravel 10
+- Laravel 11
+  
 - MySQL
 
 ## Link para Apresentação
