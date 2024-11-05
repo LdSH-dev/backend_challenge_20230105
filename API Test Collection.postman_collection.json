@@ -1,0 +1,181 @@
+{
+	"info": {
+		"_postman_id": "8dffd02d-e32f-40a1-bc54-50b0d5743f50",
+		"name": "API Test Collection",
+		"description": "Collection to test the Product API endpoints.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29441993"
+	},
+	"item": [
+		{
+			"name": "Get All Products",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-API-KEY",
+						"value": "{{API_KEY}}",
+						"type": "text"
+					},
+					{
+						"key": "X-Page",
+						"value": "1",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{base_url}}/api/products",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "API Health Check",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-API-KEY",
+						"value": "{{API_KEY}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{base_url}}/api/",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Product by Code",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-API-KEY",
+						"value": "{{API_KEY}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{base_url}}/api/products/20221126",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"products",
+						"20221126"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Product",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "X-API-KEY",
+						"value": "{{API_KEY}}",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n   \"code\": 20221126,\n   \"status\": \"published\",\n   \"imported_t\": \"2020-02-07T16:00:00Z\",\n   \"url\": \"https://world.openfoodfacts.org/product/20221126\",\n   \"creator\": \"securita\",\n   \"created_t\": 1415302075,\n   \"last_modified_t\": 1572265837,\n   \"product_name\": \"Madalenas redondas\",\n   \"quantity\": \"380 g (6 x 2 u.)\",\n   \"brands\": \"La Cestera\",\n   \"categories\": \"Lanches comida, Lanches doces, Biscoitos e Bolos, Bolos, Madalenas\",\n   \"labels\": \"Contem gluten, Contém derivados de ovos, Contém ovos\",\n   \"cities\": \"\",\n   \"purchase_places\": \"Braga,Portugal\",\n   \"stores\": \"Lidl\",\n   \"ingredients_text\": \"farinha de trigo, açúcar, óleo vegetal de girassol, clara de ovo, ovo, humidificante (sorbitol), levedantes químicos (difosfato dissódico, hidrogenocarbonato de sódio), xarope de glucose-frutose, sal, aroma\",\n   \"traces\": \"Frutos de casca rija,Leite,Soja,Sementes de sésamo,Produtos à base de sementes de sésamo\",\n   \"serving_size\": \"madalena 31.7 g\",\n   \"serving_quantity\": 31.7,\n   \"nutriscore_score\": 17,\n   \"nutriscore_grade\": \"d\",\n   \"main_category\": \"en:madeleines\",\n   \"image_url\": \"https://static.openfoodfacts.org/images/products/20221126/front_pt.5.400.jpg\"\n}"
+				},
+				"url": {
+					"raw": "{{base_url}}/api/products/20221126",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"products",
+						"20221126"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Product",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-API-KEY",
+						"value": "{{API_KEY}}",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n   \"code\": 20221126,\n   \"status\": \"published\",\n   \"imported_t\": \"2020-02-07T16:00:00Z\",\n   \"url\": \"https://world.openfoodfacts.org/product/20221126\",\n   \"creator\": \"securita\",\n   \"created_t\": 1415302075,\n   \"last_modified_t\": 1572265837,\n   \"product_name\": \"Madalenas quadradas\",\n   \"quantity\": \"380 g (6 x 2 u.)\",\n   \"brands\": \"La Cestera\",\n   \"categories\": \"Lanches comida, Lanches doces, Biscoitos e Bolos, Bolos, Madalenas\",\n   \"labels\": \"Contem gluten, Contém derivados de ovos, Contém ovos\",\n   \"cities\": \"\",\n   \"purchase_places\": \"Braga,Portugal\",\n   \"stores\": \"Lidl\",\n   \"ingredients_text\": \"farinha de trigo, açúcar, óleo vegetal de girassol, clara de ovo, ovo, humidificante (sorbitol), levedantes químicos (difosfato dissódico, hidrogenocarbonato de sódio), xarope de glucose-frutose, sal, aroma\",\n   \"traces\": \"Frutos de casca rija,Leite,Soja,Sementes de sésamo,Produtos à base de sementes de sésamo\",\n   \"serving_size\": \"madalena 31.7 g\",\n   \"serving_quantity\": 31.7,\n   \"nutriscore_score\": 17,\n   \"nutriscore_grade\": \"d\",\n   \"main_category\": \"en:madeleines\",\n   \"image_url\": \"https://static.openfoodfacts.org/images/products/20221126/front_pt.5.400.jpg\"\n}"
+				},
+				"url": {
+					"raw": "{{base_url}}/api/product",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"product"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Product",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "X-API-KEY",
+						"value": "{{API_KEY}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{base_url}}/api/products/20221126",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"products",
+						"20221126"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
